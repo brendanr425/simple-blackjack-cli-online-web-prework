@@ -38,7 +38,6 @@ def hit?(num)
   else
     invalid_command
   end
-
   return num
 end
 
@@ -52,9 +51,10 @@ end
 
 def runner
   welcome
-  initial_round
-  until hit? > 21
-    hit?
+  card_total = initial_round
+  other_total = hit?(card_total)
+  until other_total > 21
+    other_total = hit?(other_total)
   end
-  end_game
+  end_game(other_total)
 end
